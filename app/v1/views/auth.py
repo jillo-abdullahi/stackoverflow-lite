@@ -3,7 +3,7 @@
 from flask import Blueprint, jsonify, request
 
 auth = Blueprint(
-    'auth_blueprint', __name__, url_prefix='/api/v1/auth')
+    'auth_blueprint', __name__, url_prefix='/stackoverflowlite/api/v1/auth')
 
 
 @auth.route('/signup', methods=['POST'])

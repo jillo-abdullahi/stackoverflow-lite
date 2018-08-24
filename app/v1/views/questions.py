@@ -3,7 +3,7 @@
 from flask import Blueprint, jsonify, request
 
 questions = Blueprint("questions_blueprint", __name__,
-                      url_prefix="/api/v1/questions")
+                      url_prefix="/stackoverflowlite/api/v1/questions")
 
 
 @questions.route('/', methods=['POST'])
