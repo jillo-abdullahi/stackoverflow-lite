@@ -231,6 +231,24 @@ p {
   margin: 0;
 }
 
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    float: left;
+    padding: 8px 16px;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+}
+
+.pagination a.active {
+    background-color: #ffd507;
+    color: white;
+    border: 1px solid #181818;
+}
+
+
 /*footer section*/
 
 .footer-section{
@@ -289,10 +307,17 @@ p {
   }
 }
 
+.footer-section .home {
+  position: static;
+  bottom: 0;
+}
+
 .footer-section {
   position: static;
   bottom: 0;
 }
+
+
 
 @media (max-height: 300px){
   footer { 
