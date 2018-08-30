@@ -137,6 +137,23 @@ input[type=text], input[type=password], textarea,select{
   border-bottom: 1px solid black;
 }
 
+@media (max-width: 1120px) {
+
+  .ask-section {
+   width: 70%;
+   padding: 0px 20px 20px 20px;
+   margin: 15px auto;
+   float: none;
+ }
+
+ .questions-section {
+  width: 80%;
+  margin: 15px auto;
+  float: none;
+ }
+
+}
+
 /*Styling for buttons*/
 .button {
   display: block;
@@ -177,6 +194,12 @@ input[type=text], input[type=password], textarea,select{
   right: 0;
 }
 
+@media (max-width: 460px) {
+  .button {
+    width: 150px;
+    font-size: 15px;
+  }
+}
 
 
 /*login and signup forms*/
@@ -248,6 +271,58 @@ p {
     border: 1px solid #181818;
 }
 
+@media (max-width: 560px) {
+  .pagination a {
+    padding: 2px 4px;
+  }
+}
+
+
+/*Profile section*/
+
+.profile-main {
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
+}
+.user-stats {
+  width: 20%;
+  margin: 8px;
+  float: left;
+  padding: 0px 20px 20px 20px;
+  margin-top:15px;
+  margin-bottom: 15px;
+  margin-left: 15px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  background-color: #e5e5e5;
+}
+
+.user-questions {
+  width: 30%;
+  margin: 8px;
+  float: right;
+  padding: 0px 20px 20px 20px;
+  margin-top:15px;
+  margin-bottom: 15px;
+  margin-left: 15px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  background-color: #e5e5e5;
+}
+
+.user-popular-questions {
+  width: 30%;
+  float: right;
+  margin: 8px;
+  padding: 0px 20px 20px 20px;
+  margin-top:15px;
+  margin-bottom: 15px;
+  margin-left: 15px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  background-color: #e5e5e5;
+}
 
 /*footer section*/
 
