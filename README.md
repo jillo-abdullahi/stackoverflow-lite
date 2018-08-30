@@ -7,7 +7,7 @@ To get a view of the front-end UI, do the following:&nbsp;
 Clone the repository into your local environment: &nbsp;
 `git clone https://github.com/jillo-abdullahi/stackoverflow-lite`&nbsp;
 
-Switch to book-a-meal directory you just cloned:&nbsp;
+Switch to stackoverflow-lite directory you just cloned:&nbsp;
 `cd stackoverflow-lite/UI`&nbsp;
 
 Run `index.html` file in your browser.&nbsp;
