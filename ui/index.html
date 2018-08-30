@@ -19,7 +19,7 @@
 
     <div class="main">
       <div class="ask-section">
-        <div class="section-title">Ask a question</div>
+        <div class="section-title"><h3>Ask a question</h3></div>
         <form action="">
           <div class="container">
             <label for="title"><b>Title</b></label>
@@ -32,8 +32,11 @@
         </form>
       </div>
       <div class="questions-section">
-        <div class="section-title-question">Recent Questions</div>
+        <!-- <div class="section-title-question"><h3>Recent Questions</h3></div> -->
         <table id="questions-table">
+          <tr>
+            <td><h3>Recent Questions</h3></td>
+          </tr>
           <tr>
             <td>
               <h4><a href="question.html">How does one exit Vim on Ubuntu 16.04?</a></h4>
@@ -94,6 +97,22 @@
             <td><img src="img/upvote.png" alt="upvotes image">0</td>
             <td><img src="img/downvote.png" alt="upvotes image">3</span></td>
           </tr>
+          <tr>
+            <td>
+              <div class="pagination">
+                <a href="#">&laquo;</a>
+                <a href="#">1</a>
+                <a href="#" class="active">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#">6</a>
+                <a href="#">&raquo;</a>
+              </div>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
 
 
     </table>
@@ -101,7 +120,7 @@
     </div>
   </div>
 
-    <footer class="footer-section">
+    <footer class="footer-section home">
           <p class="footer-links">
             <a href="index.html">Home</a>
             ·
