@@ -396,11 +396,11 @@ p {
   width: 100px;
 }
 
-/*.upvote-btn {
-  background-image: url("../img/upvote.png");
-  background-repeat: no-repeat;
-
-}*/
+@media (max-width: 472px) {
+  .btn-text {
+    display: none;
+  }
+}
 /*footer section*/
 
 .footer-section{
