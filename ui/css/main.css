@@ -375,6 +375,11 @@ p {
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   background-color: #e5e5e5;
 }
+
+#questions-table p {
+  padding: 5px;
+}
+
  #questions-table ul {
   list-style-type: none;
   padding-left: 0px;
@@ -387,11 +392,14 @@ p {
   padding: 5px;
   border-radius: 5px;
 }
+.accept-btn {
+  width: 100px;
+}
 
 /*.upvote-btn {
   background-image: url("../img/upvote.png");
   background-repeat: no-repeat;
-  
+
 }*/
 /*footer section*/
 
