@@ -242,11 +242,6 @@ input[type=text], input[type=password], textarea,select{
   padding-bottom: 20px;
 }
 
-#section-splitter {
-  border: 1px solid #181818;
-  border-radius: 2px;
-}
-
 .signup-section {
   width:400px;
   margin: auto;
