@@ -206,14 +206,45 @@ input[type=text], input[type=password], textarea,select{
 
 /*login and signup forms*/
 
+.login-main {
+  display: table;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.middle {
+  display: table-cell;
+  vertical-align: middle;
+}
+
 .login-section {
-  width:400px;
+  width: 400px;
   margin: auto;
   padding: 20px;
-  margin-top:20px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   background-color: #e5e5e5;
+}
+
+.login-section a {
+  text-decoration: none;
+  color: #181818;
+}
+.login-section a:hover {
+  color: #ffd507;
+  background-color: #181818;
+}
+
+
+.login-image-container {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+#section-splitter {
+  border: 1px solid #181818;
+  border-radius: 2px;
 }
 
 .signup-section {
@@ -236,7 +267,7 @@ input[type=text], input[type=password], textarea,select{
     width: 100%;
     display: block;
   }
-  .login-section ,.signup-section {
+  .login-section ,.signup-section, .login-header-text {
     width: 200px;
   }
   .container .button {
@@ -480,7 +511,7 @@ p {
 
 
 
-@media (max-height: 300px){
+@media (max-width: 300px){
   footer { 
     position: static; 
   } 
