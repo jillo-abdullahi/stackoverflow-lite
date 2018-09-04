@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="shortcut icon" href="img/logo.ico"/>
+  </head>
+  <body>
+    <div class="topnav" id="myTopnav">
+      <a href="index.html" class="menu-logo"></a>
+      <a href="signup.html" class="menu-item">Signup</a>
+      <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+    </div>
+      <div class="login-section">
+        <div class="login-image-container">
+          <img src="img/login-image.png" alt="Login avatar" id="avatar">
+        </div>
+
+        <form action="">
+          <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required>
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+
+            <label><input type="checkbox" checked="checked" name="remember"> Remember me</label>
+            <button class="button" type="submit"><span>Login</span></button>
+            <label><a href="#forgot"><span>Forgot password?</span></a></label>
+             <label><a href="signup.html"><span>Create Account</span></a></label>
+          </div>
+        </form>
+      </div>
+  
+    <footer class="footer-section" style="position: fixed">
+          <p class="footer-links">
+            <a href="index.html">Home</a>
+            ·
+            <a href="#aboutus">About</a>
+            ·
+            <a href="#contact">Contact</a>
+          </p>
+          <p class="footer-company-name">stackoverflow-lite &copy; 2018</p>
+    </footer>
+    <script type="text/javascript" src="js/main.js"></script>
+  </body>
+</html>
