@@ -495,7 +495,7 @@ p {
 
 @media (max-width: 320px){
   .footer-section {
-    line-height: 0.5;
+    line-height: 0.4;
   }
   .signup-section {
     padding: 10px;
