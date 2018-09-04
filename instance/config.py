@@ -19,7 +19,13 @@ class DevelopmentConfig(Config):
     DATABASE_URI = 'postgresql://postgres:postgres@localhost/stackoverflowlite_test'
 
 
+class TestConfig(Config):
+    """Conficuration for testing"""
+    DEBUG = True
+    TESTING = True
+
 app_config = {
     'development': DevelopmentConfig,
-    'production': ProductionConfig
+    'production': ProductionConfig,
+    'testing': TestConfig
 }
