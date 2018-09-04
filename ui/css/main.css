@@ -122,6 +122,14 @@ input[type=text], input[type=password], textarea,select{
     border-radius: 6px;
 }
 
+input:focus, textarea:focus{
+  outline: none;
+  border: 2px solid #ffd507;
+  border-radius: 6px;
+
+
+}
+
 .questions-section {
   width:53%;
   float: right;
