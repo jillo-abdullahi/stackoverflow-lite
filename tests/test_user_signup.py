@@ -6,7 +6,7 @@ from app import create_app
 
 
 class TestUserCanSignup(unittest.TestCase):
-    """Class to test user login"""
+    """Class to test for user ability to register"""
 
     def setUp(self):
         """Method to create app and set up test client"""
