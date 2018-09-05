@@ -50,7 +50,7 @@ class TestUserCanLogin(unittest.TestCase):
             "password": "johndoe95"}
 
         response = self.app.post(
-            '/stackoverflowlite/api/v1/auth/signup',
+            '/stackoverflowlite/api/v1/auth/login',
             data=json.dumps(user_login_details),
             content_type='application/json')
 

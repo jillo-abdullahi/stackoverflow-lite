@@ -23,7 +23,7 @@ class TestUserCanSignup(unittest.TestCase):
         self.assertEqual(message, 'User registered successfully')
 
     def register_user(self):
-        """Method to try to register a new user"""
+        """Method to register a new user"""
         new_user_details = {
             "username": "jdoe",
             "full-name": "John Doe",
