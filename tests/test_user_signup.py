@@ -15,20 +15,21 @@ class TestUserCanSignup(unittest.TestCase):
 
     def test_user_can_signup(self):
         """Method to test if user can register"""
-        signup_response = self.register_user()
-        self.assertEqual(signup_response.status_code, 201)
+        register_response = self.register_user()
+        self.assertEqual(register_response.status_code, 201)
 
         # Test message
-        message = json.loads(signup_response.get_data(as_text=True))['message']
+        message = json.loads(register_response.get_data(as_text=True))[
+            'message']
         self.assertEqual(message, 'User registered successfully')
 
     def register_user(self):
-        """Method to register a new user"""
+        """Method to try to register a new user"""
         new_user_details = {
-            "username": "jdoe",
-            "full-name": "John Doe",
-            "email": "john.doe@gmail.com",
-            "password": "johndoe95"
+            "username": "MJane",
+            "full-name": "Mary Jane",
+            "email": "mary.jane@gmail.com",
+            "password": "maryJane95"
         }
 
         response = self.app.post(

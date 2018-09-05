@@ -16,7 +16,8 @@ class TestUserCanLogin(unittest.TestCase):
     def test_user_can_login(self):
         """Method to test if the use can log in"""
         # Register user first
-        self.register_user()
+        register_response = self.register_user()
+        self.assertEqual(register_response.status_code, 201)
 
         # Login user
         login_response = self.signin_user()
@@ -50,7 +51,7 @@ class TestUserCanLogin(unittest.TestCase):
             "password": "johndoe95"}
 
         response = self.app.post(
-            '/stackoverflowlite/api/v1/auth/login',
+            '/stackoverflowlite/api/v1/auth/signin',
             data=json.dumps(user_login_details),
             content_type='application/json')
 
