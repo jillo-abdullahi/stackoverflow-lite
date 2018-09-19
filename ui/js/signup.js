@@ -1,7 +1,6 @@
 let signup = document.querySelector("#signup-form")
 let success = document.querySelector("#success")
 let warning = document.querySelector("#warning")
-let response = ""
 
 signup.addEventListener('submit', e => {
     e.preventDefault()
