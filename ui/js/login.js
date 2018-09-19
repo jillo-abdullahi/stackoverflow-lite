@@ -27,9 +27,14 @@ loginUser = (data) => {
     })
     .then((res) => {
         if (res.status == 200) {
-            window.location.href = "dashboard.html"    
+            res.json().then(data => {
+                localStorage.setItem("token", data.access_token)
+                localStorage.setItem("username", data.success)
+                window.location.href = "dashboard.html"
+            })
+            
         }
-        })
+    })
     .catch((err) => {
         if (err.status == 401) {
             err.json().then(data => {
@@ -42,12 +47,11 @@ loginUser = (data) => {
     }) 
     
 }
-
-let handleResponse = (response) => {
+handleResponse = (response) => {
     if (!response.ok) {
         throw response;
     }
     else {
-    return response;
+        return response;
     }
 }
