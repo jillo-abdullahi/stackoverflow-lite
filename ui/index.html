@@ -1,124 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Stackoverflow-lite</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="shortcut icon" href="img/logo.ico"/>
   </head>
   <body>
     <div class="topnav" id="myTopnav">
-      <a href="#home" class="menu-logo"></a>
-      <a href="login.html" class="menu-item">Logout</a>
-      <a href="profile.html" class="menu-item">Profile</a>
+      <a href="index.html" class="menu-logo"></a>
+      <a href="signup.html" class="menu-item">Signup</a>
       <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
     </div>
+      <div class="login-section">
+        <div class="login-image-container">
+          <img src="img/login-image.png" alt="Login avatar" id="avatar">
+        </div>
 
-    <div class="main">
-      <div class="ask-section">
-        <div class="section-title"><h3>Ask a question</h3></div>
-        <form action="">
+        <form id="login-form">
+          <div id="warning" class="hide"></div>
           <div class="container">
-            <label for="title"><b>Title</b></label>
-            <input type="text" name="question-title" placeholder="What's your programming question? Be specific." required autofocus>
+            <label for="uname"><b>Email</b></label>
+            <input type="text" placeholder="Enter your email" id="email" required>
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" id="psw" required>
 
-            <label for="body"><b>Body</b></label>
-            <textarea rows="15" cols="70" name="question-body" placeholder="Describe your question" required></textarea>
-            <button class="button" type="submit"><span>Post Your Question</span></button>
+            <label><input type="checkbox" checked="checked" name="remember"> Remember me</label>
+            <button class="button" type="submit"><span>Login</span></button>
+            <label><a href="#forgot"><span>Forgot password?</span></a></label>
+             <label><a href="signup.html"><span>Create Account</span></a></label>
           </div>
         </form>
       </div>
-      <div class="questions-section">
-        <table id="questions-table">
-          <tr>
-            <td><h3>Recent Questions</h3></td>
-          </tr>
-          <tr>
-            <td>
-              <h4><a href="question.html">How does one exit Vim on Ubuntu 16.04?</a></h4>
-              <p>
-                Posted on 29/08/2018 | By <a href="profile.html">coder254</a> | <a href="question.html">5</a> answers
-              </p>
-            </td>
-            <td><img src="img/upvote.png" alt="upvotes image">3</td>
-            <td><img src="img/downvote.png" alt="upvotes image">0</span></td>
-          </tr>
-          <tr>
-            <td>
-              <h4><a href="question.html">NULL value i am getting while processing nested xml in complex xml</a></h4>
-              <p>
-                Posted on 29/08/2018 | By <a href="profile.html">TheGlitch</a> | <a href="question.html">0</a> answers
-              </p>
-            </td>
-            <td><img src="img/upvote.png" alt="upvotes image">6</td>
-            <td><img src="img/downvote.png" alt="upvotes image">2</span></td>
-          </tr>
-          <tr>
-            <td>
-              <h4><a href="question.html">Table is emptying after interaction with Datatable features</a></h4>
-              <p>
-                Posted on 29/08/2018 | By <a href="profile.html">codeGuru</a> | <a href="question.html">4</a> answers
-              </p>
-            </td>
-            <td><img src="img/upvote.png" alt="upvotes image">1</td>
-            <td><img src="img/downvote.png" alt="upvotes image">0</span></td>
-          </tr>
-          <tr>
-            <td>
-              <h4><a href="question.html">Need help to crack an Excel2016 VBA protection</a></h4>
-              <p>
-                Posted on 29/08/2018 | By <a href="profile.html">Glitcher254</a> | <a href="question.html">2</a> answers
-              </p>
-            </td>
-            <td><img src="img/upvote.png" alt="upvotes image">0</td>
-            <td><img src="img/downvote.png" alt="upvotes image">2</span></td>
-          </tr>
-          <tr>
-            <td>
-              <h4><a href="question.html">How to define new behavior for the if and else statements in C++</a></h4>
-              <p>
-                Posted on 29/08/2018 | By <a href="profile.html">coder254</a> | <a href="question.html">5</a> answers
-              </p>
-            </td>
-            <td><img src="img/upvote.png" alt="upvotes image">0</td>
-            <td><img src="img/downvote.png" alt="upvotes image">2</span></td>
-          </tr>
-          <tr>
-            <td>
-              <h4><a href="question.html">virus and it was asked in competitive Programming but i am unable to solve it?</a></h4>
-              <p>
-                Posted on 29/08/2018 | By <a href="profile.html">coder254</a> | <a href="question.html">3</a> answers
-              </p>
-            </td>
-            <td><img src="img/upvote.png" alt="upvotes image">0</td>
-            <td><img src="img/downvote.png" alt="upvotes image">3</span></td>
-          </tr>
-          <tr>
-            <td>
-              <div class="pagination">
-                <a href="#">&laquo;</a>
-                <a href="#">1</a>
-                <a href="#" class="active">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">6</a>
-                <a href="#">&raquo;</a>
-              </div>
-            </td>
-            <td></td>
-            <td></td>
-          </tr>
-
-
-    </table>
-
-    </div>
-  </div>
-
-    <footer class="footer-section">
+  
+    <footer class="footer-section" style="position: fixed">
           <p class="footer-links">
             <a href="index.html">Home</a>
             ·
@@ -129,5 +44,6 @@
           <p class="footer-company-name">stackoverflow-lite &copy; 2018</p>
     </footer>
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
   </body>
 </html>

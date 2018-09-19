@@ -32,7 +32,6 @@ signUpUser = (data) => {
         return handleResponse(response)
     })
     .then((res) => {
-        console.log('then',res)
         if (res.status == 201) {
             res.json().then(data => {
                 success.classList.remove('hide')
@@ -49,8 +48,6 @@ signUpUser = (data) => {
         }
     })
     .catch((err) => {
-        // console.log('catch', err.json())
-        // console.log(err.status)
         if (err.status == 400) {
             err.json().then(data => {
                 warning.classList.remove('hide')

@@ -423,6 +423,8 @@ p {
 
   }
 
+  
+
 }
 
 /*Question section*/
@@ -538,6 +540,7 @@ p {
     color: white;
     margin-bottom: 15px;
     border-radius: 6px;
+    margin-top: 15px;
 }
 
 #success {
@@ -546,6 +549,7 @@ p {
     color: white;
     margin-bottom: 15px;
     border-radius: 6px;
+    margin-top: 15px;
 
 }
 
@@ -558,4 +562,13 @@ p {
   line-height: 20px;
   cursor: pointer;
   transition: 0.3s;
+}
+
+@media (max-width: 1122px) {
+  #warning {
+    margin-top: 20px;
+  }
+  #success {
+    margin-top: 20px;
+  }
 }
