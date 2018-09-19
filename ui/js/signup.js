@@ -1,6 +1,7 @@
 let signup = document.querySelector("#signup-form")
 let success = document.querySelector("#success")
 let warning = document.querySelector("#warning")
+let response = ""
 
 signup.addEventListener('submit', e => {
     e.preventDefault()
@@ -15,35 +16,58 @@ signup.addEventListener('submit', e => {
             "password": password,
             "confirm-password": confirmPassword
         }
+    signUpUser(data)
+})
+
+signUpUser = (data) => {
     fetch('http://127.0.0.1:5000/stackoverflowlite/api/v1/auth/signup', {
         method: 'POST',
+        mode: "cors",
         headers: {
             'Accept': 'application/json, text/plain, */*',
             'Content-type': 'application/json'
         },
         body:JSON.stringify(data)
     })
-    .then((res) => res.json())
-    .then((data) => {
-        if (data.message == "user registered successfully"){
-            success.classList.remove('hide')
-            warning.classList.add('hide')
-            success.classList.add('show')
+    .then((response) => {
+        return handleResponse(response)
+    })
+    .then((res) => {
+        console.log('then',res)
+        if (res.status == 201) {
+            res.json().then(data => {
+                success.classList.remove('hide')
+                warning.classList.add('hide')
+                success.classList.add('show')
 
-            redirectMessage = 'Redirecting you to the login page in 5 seconds'
-            success.innerHTML = 'Success! '+data.message+'. '+redirectMessage
+                redirectMessage = `Redirecting you to the login page in 5 seconds`
+                success.innerHTML = `Success! ${data.message} ${redirectMessage}`
 
-            // Redirect to login page after 5 seconds
-            setTimeout(function () {
-                window.location.href = "login.html";
-             }, 5000);
+                // Redirect to login page after 5 seconds
+                setTimeout(() => window.location.href = "index.html", 5000);
+            })
+            
         }
-        else if (data.error) {
-            warning.classList.remove('hide')
-            warning.classList.add('show')
-            warning.innerHTML = 'Warning! '+data.error
-        }
+    })
+    .catch((err) => {
+        // console.log('catch', err.json())
+        // console.log(err.status)
+        if (err.status == 400) {
+            err.json().then(data => {
+                warning.classList.remove('hide')
+                warning.classList.add('show')
+                warning.innerHTML = `Warning! ${data.error}`
+            })
 
+        }
     })   
+}
 
-})
+handleResponse = (response) => {
+    if (!response.ok) {
+        throw response;
+    }
+    else {
+    return response;
+    }
+}
