@@ -524,3 +524,38 @@ p {
   }
 }
 
+/* Styling for alerts */
+.show{
+  display: block;
+}
+.hide{
+  display: none;
+}
+
+#warning {
+    padding: 20px;
+    background-color: #ff9800; /* Red */
+    color: white;
+    margin-bottom: 15px;
+    border-radius: 6px;
+}
+
+#success {
+    padding: 20px;
+    background-color: #4CAF50; /* Red */
+    color: white;
+    margin-bottom: 15px;
+    border-radius: 6px;
+
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
