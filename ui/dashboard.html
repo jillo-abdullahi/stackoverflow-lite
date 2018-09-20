@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stackoverflow-lite</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="shortcut icon" href="img/logo.ico"/>
+  </head>
+  <body>
+    <div class="topnav" id="myTopnav">
+      <a href="#home" class="menu-logo"></a>
+      <a href="index.html" class="menu-item">Logout</a>
+      <a href="profile.html" class="menu-item" id="username-field">Profile</a>
+      <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+    </div>
+
+    <div class="main">
+      <div class="ask-section">
+          <div id="success" class="hide"></div>
+          <div id="warning" class="hide"></div>
+        <div class="section-title"><h3>Ask a question</h3></div>
+        <form id="ask-form">
+          <div class="container">
+            <label for="title"><b>Title</b></label>
+            <input type="text" id="question-title" placeholder="What's your programming question? Be specific." required autofocus>
+
+            <label for="body"><b>Body</b></label>
+            <textarea rows="15" cols="70" id="question-body" placeholder="Describe your question" required></textarea>
+            <button class="button" type="submit"><span>Post Your Question</span></button>
+          </div>
+        </form>
+      </div>
+      
+      <div class="questions-section">
+        <div class="questions-header"><h3>Recent Questions:</h3></div>
+        <div id="questions-status" class="hide"></div>
+        <table id="questions-table"></table>
+    </div>
+  </div>
+
+    <footer class="footer-section">
+          <p class="footer-links">
+            <a href="index.html">Home</a>
+            ·
+            <a href="#aboutus">About</a>
+            ·
+            <a href="#contact">Contact</a>
+          </p>
+          <p class="footer-company-name">stackoverflow-lite &copy; 2018</p>
+    </footer>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/dashboard.js"></script>
+  </body>
+</html>
