@@ -38,8 +38,12 @@ signUpUser = (data) => {
                 warning.classList.add('hide')
                 success.classList.add('show')
 
-                redirectMessage = `Redirecting you to the login page in 5 seconds`
-                success.innerHTML = `Success! ${data.message} ${redirectMessage}`
+                redirectMessage = `Redirecting you to the login page in `
+
+                output = `<p> ${redirectMessage} <span id="countdowntimer">5 </span> Seconds</p>`
+                countDown()
+
+                success.innerHTML = `Success! ${data.message} ${output}`
 
                 // Redirect to login page after 5 seconds
                 setTimeout(() => window.location.href = "index.html", 5000);
@@ -66,4 +70,14 @@ handleResponse = (response) => {
     else {
     return response;
     }
+}
+
+countDown = () => {
+    let timeleft = 5;
+    let downloadTimer = setInterval(function(){
+    timeleft--;
+    document.getElementById("countdowntimer").textContent = timeleft;
+    if(timeleft <= 0)
+        clearInterval(downloadTimer);
+    },1000);
 }
