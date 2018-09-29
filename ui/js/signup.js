@@ -1,83 +1,74 @@
-let signup = document.querySelector("#signup-form")
-let success = document.querySelector("#success")
-let warning = document.querySelector("#warning")
+const signup = document.querySelector('#signup-form');
+const success = document.querySelector('#success');
+const warning = document.querySelector('#warning');
 
+// Event listener for user signup
 signup.addEventListener('submit', e => {
-    e.preventDefault()
-    let username = document.querySelector("#username").value
-    let email = document.querySelector("#email").value
-    let password = document.querySelector("#psw").value
-    let confirmPassword = document.querySelector("#cpsw").value
+    e.preventDefault();
+    const usName = document.querySelector('#username').value;
+    const usEmail = document.querySelector('#email').value;
+    const usPassword = document.querySelector('#psw').value;
+    const usConfPassword = document.querySelector('#cpsw').value;
 
-    data = {
-            "username": username,
-            "email": email,
-            "password": password,
-            "confirm-password": confirmPassword
-        }
-    signUpUser(data)
-})
+    const userData = {
+            username: usName,
+            email: usEmail,
+            password: usPassword,
+            confirm: usConfPassword
+        };
+    signUpUser(userData);
+});
 
-signUpUser = (data) => {
+const signUpUser = (details) => {
     fetch('http://127.0.0.1:5000/stackoverflowlite/api/v1/auth/signup', {
         method: 'POST',
-        mode: "cors",
         headers: {
-            'Accept': 'application/json, text/plain, */*',
+            Accept: 'application/json, text/plain, */*',
             'Content-type': 'application/json'
         },
-        body:JSON.stringify(data)
+        body: JSON.stringify(details)
     })
-    .then((response) => {
-        return handleResponse(response)
-    })
+    .then((response) => handleResponse(response))
     .then((res) => {
-        if (res.status == 201) {
+        if (res.status === 201) {
             res.json().then(data => {
-                success.classList.remove('hide')
-                warning.classList.add('hide')
-                success.classList.add('show')
+                success.classList.remove('hide');
+                warning.classList.add('hide');
+                success.classList.add('show');
 
-                redirectMessage = `Redirecting you to the login page in `
+                const redirectMessage = 'Redirecting you to the login page in ';
 
-                output = `<p> ${redirectMessage} <span id="countdowntimer">5 </span> Seconds</p>`
-                countDown()
+                const output = `<p> ${redirectMessage} 
+                <span id="countdowntimer">3 </span> Seconds</p>`;
+                countDown();
 
-                success.innerHTML = `Success! ${data.message} ${output}`
+                success.innerHTML = `Success! ${data.message} ${output}`;
 
-                // Redirect to login page after 5 seconds
-                setTimeout(() => window.location.href = "index.html", 5000);
-            })
-            
+                // Redirect to login page after 3 seconds
+                const redirect = () => { window.location.href = 'index.html'; };
+                setTimeout(redirect, 3000);
+            });   
         }
     })
     .catch((err) => {
-        if (err.status == 400) {
+        if (err.status === 400) {
             err.json().then(data => {
-                warning.classList.remove('hide')
-                warning.classList.add('show')
-                warning.innerHTML = `Warning! ${data.error}`
-            })
-
+                warning.classList.remove('hide');
+                warning.classList.add('show');
+                warning.innerHTML = `Warning! ${data.error}`;
+            });
         }
-    })   
-}
+    });  
+};
 
-handleResponse = (response) => {
-    if (!response.ok) {
-        throw response;
-    }
-    else {
-    return response;
-    }
-}
-
-countDown = () => {
-    let timeleft = 5;
-    let downloadTimer = setInterval(function(){
+// Function for countdown
+const countDown = () => {
+    let timeleft = 3;
+    const downloadTimer = setInterval(timerFunc = () => {
     timeleft--;
-    document.getElementById("countdowntimer").textContent = timeleft;
-    if(timeleft <= 0)
+    document.getElementById('countdowntimer').textContent = timeleft;
+    if (timeleft <= 0) {
         clearInterval(downloadTimer);
-    },1000);
-}
+    }  
+    }, 1000);
+};

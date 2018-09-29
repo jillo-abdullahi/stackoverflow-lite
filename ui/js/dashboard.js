@@ -1,140 +1,138 @@
-let ask = document.querySelector("#ask-form")
-let warning = document.querySelector("#warning")
-let questionStatus = document.querySelector("#questions-status")
-let questionsTable = document.querySelector("#questions-table")
-let username = document.querySelector("#username-field")
-let token = localStorage.getItem("token")
-let loggedInAs = localStorage.getItem("username")
+const ask = document.querySelector('#ask-form');
+const warning = document.querySelector('#warning');
+const success = document.querySelector('#success');
+const main = document.querySelector('#main-section');
+const logout = document.querySelector('#logout');
+const questionStatus = document.querySelector('#questions-status');
+const questionsTable = document.querySelector('#questions-table');
+const username = document.querySelector('#username-field');
+const token = localStorage.getItem('token');
+const loggedInAs = localStorage.getItem('username');
 
 // Set username on this page
-username.innerHTML = loggedInAs
+username.innerHTML = loggedInAs;
 
+// Return login message if user is not logged in
+if (localStorage.getItem('token') === null) {
+    let output = '';
+    output += `<div id="warning" class="show" style="margin-left: 15px; margin-right: 15px;">
+    Please login to view this page.</div>
+    `;
+    main.innerHTML = output;
+    logout.innerHTML = 'Login';
+}
+
+// Add even listener on question form submission
 ask.addEventListener('submit', e => {
-    e.preventDefault()
-    let title = document.querySelector("#question-title").value
-    let description = document.querySelector("#question-body").value
+    e.preventDefault();
+    const qnTitle = document.querySelector('#question-title').value;
+    const qnDescription = document.querySelector('#question-body').value;
 
-    data = {
-            "title": title,
-            "description": description
-        }
-    postQuestion(data)   
+    const qnDetails = {
+            title: qnTitle,
+            description: qnDescription
+        };
+    postQuestion(qnDetails);   
+});
 
-})
-
-document.addEventListener("DOMContentLoaded", () => {
-    getAllQuestions()
+// Add event listener for when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    getAllQuestions();
   });
 
-postQuestion = (data) => {
+// Function to post new question
+const postQuestion = (details) => {
     fetch('http://127.0.0.1:5000/stackoverflowlite/api/v1/questions/', {
         method: 'POST',
         headers: {
-            'Authorization': 'Bearer '+token,
-            'Accept': 'application/json, text/plain, */*',
+            Authorization: `Bearer ${token}`,
+            Accept: 'application/json, text/plain, */*',
             'Content-type': 'application/json'
         },
-        body:JSON.stringify(data)
+        body: JSON.stringify(details)
     })
+    .then((res) => handleResponse(res))
     .then((res) => {
-        return handleResponse(res)
-    })
-    .then((res) => {
-        if (res.status == 201) {
+        if (res.status === 201) {
             res.json().then(data => {
-                warning.classList.remove('show')
-                warning.classList.add('hide')
-                success.classList.remove('hide')
-                success.classList.add('show')
+                warning.classList.remove('show');
+                warning.classList.add('hide');
+                success.classList.remove('hide');
+                success.classList.add('show');
 
-                success.innerHTML = `Success! ${data.message}`
-                setTimeout(function () { location.reload(true); }, 2000);
-
-            })
-            
+                success.innerHTML = `Success! ${data.message}`;
+                const timeOut = () => { location.reload(true); };
+                setTimeout(timeOut, 2000);
+            });  
         }
     })
     .catch((err) => {
-        if (err.status == 400) {
+        if (err.status === 400) {
             err.json().then(data => {
-                success.classList.remove('show')
-                success.classList.add('hide')
-                warning.classList.remove('hide')
-                warning.classList.add('show')
-                warning.innerHTML = `Warning! ${data.error}`
-            })
-
+                success.classList.remove('show');
+                success.classList.add('hide');
+                warning.classList.remove('hide');
+                warning.classList.add('show');
+                warning.innerHTML = `Warning! ${data.error}`;
+            });
+        } else if (err.status === 401) {
+            success.classList.remove('show');
+            success.classList.add('hide');
+            warning.classList.remove('hide');
+            warning.classList.add('show');
+            warning.innerHTML = 'Please login first to post a question';
         }
-        else if (err.status == 401) {
-            success.classList.remove('show')
-            success.classList.add('hide')
-            warning.classList.remove('hide')
-            warning.classList.add('show')
-            warning.innerHTML = `Please login first to post a question`
+    });
+};
 
-        }
-    }) 
-}
-
-getAllQuestions = () => {
+// Function to get all question from all users
+const getAllQuestions = () => {
     fetch('http://127.0.0.1:5000/stackoverflowlite/api/v1/questions/', {
         method: 'GET',
         headers: {
-            'Authorization': `Bearer ${token}`,
-            'Accept': 'application/json, text/plain, */*',
+            Authorization: `Bearer ${token}`,
+            Accept: 'application/json, text/plain, */*',
             'Content-type': 'application/json'
         }   
     })
-    .then((response) => {
-        return handleResponse(response)
-    })
+    .then((response) => handleResponse(response))
     .then((res) => {
-        if (res.status == 200) {
+        if (res.status === 200) {
             res.json().then(data => {
-                output = ''
+                let output = '';
                 data.questions.forEach(element => {
                     output += `
                     <tr>
                         <td>
-                            <h4><a href="question.html" id="question-title"><b>${element.title}</b></a></h4>
-                                <p>
-                            Posted: <span id="post-time">${element.date_created}</span> | By <a href="profile.html" id="post-by">${element.username[0]}</a> | <a href="question.html" id="answers-count">${element.Answers.length}</a> answers
+                            <h4 onclick="saveDetails(${element.question_id})" 
+                            style="cursor: pointer;">
+                                <a id="question-title"><b>${element.title}</b></a>
+                            </h4>
+                            <p>
+                            Posted: <span id="post-time">${element.date_created}</span> | 
+                            By <a href="#" id="post-by">${element.username[0]}</a> | 
+                            <a href="question.html" id="answers-count">${element.Answers.length}
+                            </a> answers
                         </p>
                         </td>
                         <td><img src="img/upvote.png" alt="upvotes image">3</td>
                     <td><img src="img/downvote.png" alt="upvotes image">0</span></td>
                     </tr>
-                    
-                    `
+                    `;
                 });
-                questionsTable.innerHTML = output
-
-            })
-            
+                questionsTable.innerHTML = output;
+            });   
         }
     })
     .catch((err) => {
-        if (err.status == 404) {
+        if (err.status === 404) {
             err.json().then(data => {
-                console.log("No questions")
-                questionStatus.classList.remove('hide')
-                questionStatus.classList.add('show')
-                addMessage = `Be the first one to ask`
-                questionStatus.innerHTML = `${data.message}. ${addMessage}.`
-            })
-
+                questionStatus.classList.remove('hide');
+                questionStatus.classList.add('show');
+                const addMessage = 'Be the first one to ask';
+                questionStatus.innerHTML = `${data.message}. ${addMessage}.`;
+            });
         }
-    }) 
-
-}
-
-handleResponse = (response) => {
-    if (!response.ok) {
-        throw response;
-    }
-    else {
-        return response;
-    }
-}
-
+    });
+};
 
