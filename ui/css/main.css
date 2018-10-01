@@ -484,6 +484,41 @@ p {
   width: 100px;
 }
 
+#question-details{
+  margin-top: 10px;
+  background-color: #ccc;
+  padding: 5px;
+}
+
+#question-body {
+  line-height: 1.5em;
+}
+
+hr {
+  border: 1px solid #4c4c4c;
+  border-radius: 2px;
+}
+
+#accepted {
+  font-size: .7em;
+  background-color: #181818;
+  padding: 5px;
+  color: #ffd507;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+ul#buttons-list {
+  list-style-type: none;
+  margin: 0;
+  
+
+}
+
+ul#buttons-list li {
+  display: inline;
+}
+
 @media (max-width: 472px) {
   .btn-text {
     display: none;
@@ -627,7 +662,5 @@ p {
   cursor: pointer;
 }
 
-hr {
-  border: 1px solid #181818;
-  border-radius: 2px;
-}
+
+
