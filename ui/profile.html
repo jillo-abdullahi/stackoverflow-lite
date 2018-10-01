@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>The Glitch</title>
+    <title>Your Profile</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">   
@@ -11,188 +11,35 @@
   </head>
   <body>
     <div class="topnav" id="myTopnav">
-      <a href="index.html" class="menu-logo"></a>
-      <a href="login.html" class="menu-item">Logout</a>
-      <a href="login.html" class="menu-item"><span class="username">TheGlitch</span></a>
+      <a href="dashboard.html" class="menu-logo"></a>
+      <a onclick="logOut()" class="menu-item" id="logout">Logout</a>
+      <a href="#" class="menu-item" id="username-field"></a>
+      <a href="dashboard.html" class="menu-item" id="ask-question-btn">Ask a question</a>
       <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
     </div>
     <div class="profile-main">
       <div class="user-stats">
           <div class="stat"><img src="img/login-image.png" alt="Profile avatar">
-            <p><b>Username:</b> TheGlitch</p>
+            <p id="username"><b>Username:</b></p>
             <p><b>Bio:</b> Enough talk, let's code!</p>
           </div>
-        <div class="stat"><h2>30</h2> Questions asked</div>
-        <div class="stat"><h2>67</h2> Questions answered</div>
+        <div class="stat"><h2 id="questions-count"></h2> Questions asked</div>
+        <div class="stat"><h2 id="answers-count"></h2> Answers Provided</div>
       </div>
     
 
       <div class="user-questions">
+          <div class="questions-header"><h3>Your recent Questions:</h3></div>
+          <div id="questions-status" class="hide"></div>
           <table id="questions-table">
-          <tr>
-            <td><h3>Your recent questions</h3></td>
-          </tr>
-          <tr>
-            <td>
-              <h4><a href="question.html">How does one exit Vim on Ubuntu 16.04?</a></h4>
-              <p>
-                Posted on <span class="date">31/08/2018</span> | <a href="question.html">5</a> answers | <button type="button" class="delete-btn"><i class="fa fa-trash"></i> <span class="btn-text">Delete</span></button>
-              </p>
-            </td>
-            <td><img src="img/upvote.png" alt="upvotes image">3</td>
-            <td><img src="img/downvote.png" alt="upvotes image">0</span></td>
-          </tr>
-          <tr>
-            <td>
-              <h4><a href="question.html">NULL value i am getting while processing nested xml in complex xml</a></h4>
-              <p>
-                Posted on 30/08/2018 | <a href="question.html">0</a> answers | <button type="button" class="delete-btn"><i class="fa fa-trash"></i> <span class="btn-text">Delete</span></button>
-              </p>
-            </td>
-            <td><img src="img/upvote.png" alt="upvotes image">6</td>
-            <td><img src="img/downvote.png" alt="upvotes image">2</span></td>
-          </tr>
-          <tr>
-            <td>
-              <h4><a href="question.html">Table is emptying after interaction with Datatable features</a></h4>
-              <p>
-                Posted on 27/08/2018 | <a href="question.html">4</a> answers | <button type="button" class="delete-btn"><i class="fa fa-trash"></i> <span class="btn-text">Delete</span></button>
-              </p>
-            </td>
-            <td><img src="img/upvote.png" alt="upvotes image">1</td>
-            <td><img src="img/downvote.png" alt="upvotes image">0</span></td>
-          </tr>
-          <tr>
-            <td>
-              <h4><a href="question.html">Need help to crack an Excel2016 VBA protection</a></h4>
-              <p>
-                Posted on 26/08/2018 | <a href="question.html">2</a> answers | <button type="button" class="delete-btn"><i class="fa fa-trash"></i> <span class="btn-text">Delete</span></button>
-              </p>
-            </td>
-            <td><img src="img/upvote.png" alt="upvotes image">0</td>
-            <td><img src="img/downvote.png" alt="upvotes image">2</span></td>
-          </tr>
-          <tr>
-            <td>
-              <h4><a href="question.html">How to define new behavior for the if and else statements in C++</a></h4>
-              <p>
-                Posted on 10/08/2018 | <a href="question.html">5</a> answers | <button type="button" class="delete-btn"><i class="fa fa-trash"></i> <span class="btn-text">Delete</span></button>
-              </p>
-            </td>
-            <td><img src="img/upvote.png" alt="upvotes image">0</td>
-            <td><img src="img/downvote.png" alt="upvotes image">2</span></td>
-          </tr>
-          <tr>
-            <td>
-              <h4><a href="question.html">virus and it was asked in competitive Programming but i am unable to solve it?</a></h4>
-              <p>
-                Posted on 05/08/2018 | <a href="question.html">3</a> answers | <button type="button" class="delete-btn"><i class="fa fa-trash"></i> <span class="btn-text">Delete</span></button>
-              </p>
-            </td>
-            <td><img src="img/upvote.png" alt="upvotes image">0</td>
-            <td><img src="img/downvote.png" alt="upvotes image">3</span></td>
-          </tr>
-          <tr>
-            <td>
-              <div class="pagination">
-                <a href="#">&laquo;</a>
-                <a href="#">1</a>
-                <a href="#" class="active">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">6</a>
-                <a href="#">&raquo;</a>
-              </div>
-            </td>
-            <td></td>
-            <td></td>
-          </tr>
           </table>
 
       </div>
 
       <div class="user-popular-questions">
-          <table id="questions-table">
-          <tr>
-            <td><h3>Your Most Popular Questions</h3></td>
-          </tr>
-          <tr>
-            <td>
-              <h4><a href="question.html">How does one exit Vim on Ubuntu 16.04?</a></h4>
-              <p>
-                Posted on <span class="date">31/08/2018</span> | <a href="question.html">5</a> answers
-              </p>
-            </td>
-            <td><img src="img/upvote.png" alt="upvotes image">3</td>
-            <td><img src="img/downvote.png" alt="upvotes image">0</span></td>
-          </tr>
-          <tr>
-            <td>
-              <h4><a href="question.html">NULL value i am getting while processing nested xml in complex xml</a></h4>
-              <p>
-                Posted on 30/08/2018 | <a href="question.html">0</a> answers
-              </p>
-            </td>
-            <td><img src="img/upvote.png" alt="upvotes image">6</td>
-            <td><img src="img/downvote.png" alt="upvotes image">2</span></td>
-          </tr>
-          <tr>
-            <td>
-              <h4><a href="question.html">Table is emptying after interaction with Datatable features</a></h4>
-              <p>
-                Posted on 27/08/2018 | <a href="question.html">4</a> answers
-              </p>
-            </td>
-            <td><img src="img/upvote.png" alt="upvotes image">1</td>
-            <td><img src="img/downvote.png" alt="upvotes image">0</span></td>
-          </tr>
-          <tr>
-            <td>
-              <h4><a href="question.html">Need help to crack an Excel2016 VBA protection</a></h4>
-              <p>
-                Posted on 26/08/2018 | <a href="question.html">2</a> answers
-              </p>
-            </td>
-            <td><img src="img/upvote.png" alt="upvotes image">0</td>
-            <td><img src="img/downvote.png" alt="upvotes image">2</span></td>
-          </tr>
-          <tr>
-            <td>
-              <h4><a href="question.html">How to define new behavior for the if and else statements in C++</a></h4>
-              <p>
-                Posted on 10/08/2018 | <a href="question.html">5</a> answers
-              </p>
-            </td>
-            <td><img src="img/upvote.png" alt="upvotes image">0</td>
-            <td><img src="img/downvote.png" alt="upvotes image">2</span></td>
-          </tr>
-          <tr>
-            <td>
-              <h4><a href="question.html">virus and it was asked in competitive Programming but i am unable to solve it?</a></h4>
-              <p>
-                Posted on 05/08/2018 | <a href="question.html">3</a> answers
-              </p>
-            </td>
-            <td><img src="img/upvote.png" alt="upvotes image">0</td>
-            <td><img src="img/downvote.png" alt="upvotes image">3</span></td>
-          </tr>
-          <tr>
-            <td>
-              <div class="pagination">
-                <a href="#">&laquo;</a>
-                <a href="#">1</a>
-                <a href="#" class="active">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">6</a>
-                <a href="#">&raquo;</a>
-              </div>
-            </td>
-            <td></td>
-            <td></td>
-          </tr>
+          <div class="questions-pop-header"><h3>Your most popular questions:</h3></div>
+          <div id="questions-pop-status" class="hide"></div>
+          <table id="questions-pop-table">
           </table>
       </div>
 
@@ -208,5 +55,6 @@
           <p class="footer-company-name">stackoverflow-lite &copy; 2018</p>
     </footer>
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/profile.js"></script>
   </body>
 </html>

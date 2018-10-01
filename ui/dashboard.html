@@ -11,12 +11,12 @@
   <body>
     <div class="topnav" id="myTopnav">
       <a href="#home" class="menu-logo"></a>
-      <a href="index.html" class="menu-item">Logout</a>
+      <a onclick="logOut()" class="menu-item" id="logout">Logout</a>
       <a href="profile.html" class="menu-item" id="username-field">Profile</a>
       <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
     </div>
 
-    <div class="main">
+    <div class="main" id="main-section">
       <div class="ask-section">
           <div id="success" class="hide"></div>
           <div id="warning" class="hide"></div>
