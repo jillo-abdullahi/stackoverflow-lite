@@ -1,6 +1,7 @@
 const signup = document.querySelector('#signup-form');
 const success = document.querySelector('#success');
 const warning = document.querySelector('#warning');
+const uri = 'https://stackoverflowlite-api.herokuapp.com/stackoverflowlite/api/v1/auth/signup';
 
 // Event listener for user signup
 signup.addEventListener('submit', e => {
@@ -20,7 +21,7 @@ signup.addEventListener('submit', e => {
 });
 
 const signUpUser = (details) => {
-    fetch('http://127.0.0.1:5000/stackoverflowlite/api/v1/auth/signup', {
+    fetch(uri, {
         method: 'POST',
         headers: {
             Accept: 'application/json, text/plain, */*',
