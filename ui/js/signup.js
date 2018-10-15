@@ -43,7 +43,7 @@ const signUpUser = (details) => {
                 <span id="countdowntimer">3 </span> Seconds</p>`;
                 countDown();
 
-                success.innerHTML = `Success! ${data.message} ${output}`;
+                success.innerHTML = `${data.message} ${output}`;
 
                 // Redirect to login page after 3 seconds
                 const redirect = () => { window.location.href = 'index.html'; };
@@ -56,7 +56,7 @@ const signUpUser = (details) => {
             err.json().then(data => {
                 warning.classList.remove('hide');
                 warning.classList.add('show');
-                warning.innerHTML = `Warning! ${data.error}`;
+                warning.innerHTML = data.error;
             });
         }
     });  
