@@ -24,12 +24,10 @@
         <p>Posted by: <b><span id="posted-by"></span></b></p>
         <p>Posted on: <b><span id="posted-at"></span></b></p>
       </div>
-       
+      <!-- Form to load answers -->
       <div class="question-answers">
         <table id="questions-table">
-          
           <hr>
-        
           </table>
           <table id="questions-pop-table">
               <div id="warning" class="hide"></div>
@@ -45,10 +43,24 @@
                     </form>
                   </td>
                 </tr>
+                <tr>
+                    <div id="edit-container" class="modal" tabindex="-1">
+                        <form id="answersEditForm">
+                        <div class="container">
+                        <label for="answer"><b>Update Answer</b></label>
+                        <textarea rows="15" cols="50" id="edit-answer-body" placeholder="Your Answer" required></textarea>
+                        <div id="edit-buttons">
+                          <div class="grid-item"><button class="button" type="submit"><span>Update Answer</span></button></div>
+                          <div class="grid-item"><a class="button" id="cancel-form">Cancel</a></div>
+                        </div>
+                        </div>
+                        </form>
+                      </div>  
+                </tr>
           </table>
       </div>
     </div>
-    <footer class="footer-section">
+    <footer class="footer-section" style="position: static;">
           <p class="footer-links">
             <a href="index.html">Home</a>
             ·

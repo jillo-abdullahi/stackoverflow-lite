@@ -9,10 +9,16 @@ const username = document.querySelector('#username-field');
 const loadQuestions = document.querySelector('.load-question');
 const logout = document.querySelector('#logout');
 const postAnswer = document.querySelector('#answersForm');
+const updateAnswer = document.querySelector('#answersEditForm');
+const editAnswerContainer = document.querySelector('#edit-container');
+const editAnswerTitle = document.querySelector('#edit-answer-body');
+const closeButton = document.getElementById('cancel-form');
 const userId = localStorage.getItem('user_id');
 const questionId = localStorage.getItem('questionId');
 const token = localStorage.getItem('token');
 const loggedInAs = localStorage.getItem('username');
+const baseUri = 'https://stackoverflowlite-api.herokuapp.com/stackoverflowlite/api/v1/';
+
 
 // Return login message if user is not logged in
 if (localStorage.getItem('token') === null) {
@@ -32,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Load question onto the current page
 let getOneQuestion = () => {
-    fetch(`http://127.0.0.1:5000/stackoverflowlite/api/v1/questions/${questionId}`, {
+    fetch(`${baseUri}questions/${questionId}`, {
         method: 'GET',
         headers: {
             Authorization: `Bearer ${token}`,
@@ -63,7 +69,7 @@ let getOneQuestion = () => {
                         output += `
                                 <tr>
                                 <td>
-                                    <p>${element.title}</p>
+                                    <p id="answer-title">${element.title}</p>
                                     <p> - <b>${element.username}</b>
                                     <p>Posted on: ${element.date_created}</p>
                                     <ul id="buttons-list">
@@ -133,7 +139,7 @@ postAnswer.addEventListener('submit', e => {
 
 // Function to post a new answer
 let userPostAnswer = (details) => {
-    fetch(`http://127.0.0.1:5000/stackoverflowlite/api/v1/questions/${questionId}/answers`, {
+    fetch(`${baseUri}questions/${questionId}/answers`, {
         method: 'POST',
         headers: {
             Authorization: `Bearer ${token}`,
@@ -169,7 +175,7 @@ let userPostAnswer = (details) => {
 // Function to accept answer
 const acceptAnswer = (answerId) => {
     if (confirm('Please confirm if you would like to accept this answer')) { 
-        fetch(`http://127.0.0.1:5000/stackoverflowlite/api/v1/questions/${questionId}/answers/${answerId}`, {
+        fetch(`${baseUri}questions/${questionId}/answers/${answerId}`, {
         method: 'PUT',
         headers: {
             Authorization: `Bearer ${token}`,
@@ -177,23 +183,107 @@ const acceptAnswer = (answerId) => {
             'Content-type': 'application/json'
         },
         body: JSON.stringify({})
+        })
+        .then((response) => handleResponse(response))
+        .then((res) => {
+            if (res.status === 200) {
+                res.json().then(data => {
+                    alert(data.message);
+                    const timeOut = () => { location.reload(true); };
+                    setTimeout(timeOut, 1000);
+                });     
+            }
+        })
+        .catch((err) => {
+            if (err.status === 403) {
+                err.json().then(data => {
+                    alert(data.message);
+                });
+            }
+            });  
+    }  
+};
+
+// close the edit answer modal using the close button
+closeButton.addEventListener('click', e => {
+    e.preventDefault();
+    document.getElementById('edit-container').style.display = 'none';
+
+    // Display post answer form on cancellation
+    postAnswer.style.display = 'block';
+});
+
+
+// Function to edit answer
+const editAnswer = (answerId) => {
+
+    // Hide the post answer form
+    postAnswer.style.display = 'none';
+
+    // Display the edit answer form
+    editAnswerContainer.style.display = 'block';
+    editAnswerContainer.focus();
+
+    
+    // Set the value of form field to the answer being edited
+    fetch(`${baseUri}answer/${answerId}`, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: 'application/json, text/plain, */*',
+            'Content-type': 'application/json'
+        }   
     })
     .then((response) => handleResponse(response))
     .then((res) => {
         if (res.status === 200) {
             res.json().then(data => {
-                alert(data.message);
-                const timeOut = () => { location.reload(true); };
-                setTimeout(timeOut, 1000);
-            });     
+                editAnswerTitle.value = data.message;
+            });    
         }
     })
     .catch((err) => {
-        if (err.status === 403) {
+        if (err.status === 404) {
             err.json().then(data => {
                 alert(data.message);
             });
         }
-        });  
-    }  
+    });   
+    
+    // Edit the answer that has been selected
+    updateAnswer.addEventListener('submit', e => {
+        e.preventDefault();
+        const newAnswer = editAnswerTitle.value;
+
+        const ansBody = {
+            description: newAnswer
+        };
+
+        fetch(`${baseUri}questions/${questionId}/answers/${answerId}`, {
+        method: 'PUT',
+        headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: 'application/json, text/plain, */*',
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(ansBody)
+        })
+        .then((response) => handleResponse(response))
+        .then((res) => {
+            if (res.status === 200) {
+                res.json().then(data => {
+                    alert(data.message);
+                    const timeOut = () => { location.reload(true); };
+                    setTimeout(timeOut, 1000);
+                });     
+            }
+        })
+        .catch((err) => {
+            if (err.status === 403) {
+                err.json().then(data => {
+                    alert(data.message);
+                });
+            }
+            });  
+    });  
 };

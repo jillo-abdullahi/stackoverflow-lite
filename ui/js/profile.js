@@ -12,6 +12,7 @@ const username = document.querySelector('#username-field');
 const token = localStorage.getItem('token');
 const loggedInAs = localStorage.getItem('username');
 const userId = localStorage.getItem('user_id');
+const baseUri = 'https://stackoverflowlite-api.herokuapp.com/stackoverflowlite/api/v1/';
 
 // Return login message if user is not logged in
 if (localStorage.getItem('token') === null) {
@@ -36,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Get the number of answers by this user
 let getAnswersProvided = () => {
-    fetch(`http://127.0.0.1:5000/stackoverflowlite/api/v1/answers/${userId}`, {
+    fetch(`${baseUri}answers/${userId}`, {
         method: 'GET',
         headers: {
             Authorization: `Bearer ${token}`,
@@ -63,7 +64,7 @@ let getAnswersProvided = () => {
 
 // Get all questions by the current user
 let getUserQuestions = () => {
-    fetch(`http://127.0.0.1:5000/stackoverflowlite/api/v1/question/${userId}`, {
+    fetch(`${baseUri}question/${userId}`, {
         method: 'GET',
         headers: {
             Authorization: `Bearer ${token}`,
@@ -142,7 +143,7 @@ let getUserQuestions = () => {
 // Function to delete question
 const deleteQuestion = (questionId) => {
     if (confirm('Are you sure you want to delete this question?')) {
-        fetch(`http://127.0.0.1:5000/stackoverflowlite/api/v1/questions/${questionId}`, {
+        fetch(`${baseUri}questions/${questionId}`, {
         method: 'DELETE',
         headers: {
             Authorization: `Bearer ${token}`,
@@ -166,5 +167,5 @@ const deleteQuestion = (questionId) => {
             });
         }
     });          
-    }      
+    }     
 };

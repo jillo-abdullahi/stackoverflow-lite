@@ -8,6 +8,8 @@ const questionsTable = document.querySelector('#questions-table');
 const username = document.querySelector('#username-field');
 const token = localStorage.getItem('token');
 const loggedInAs = localStorage.getItem('username');
+const baseUri = 'https://stackoverflowlite-api.herokuapp.com/stackoverflowlite/api/v1/questions';
+
 
 // Set username on this page
 username.innerHTML = loggedInAs;
@@ -42,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Function to post new question
 const postQuestion = (details) => {
-    fetch('http://127.0.0.1:5000/stackoverflowlite/api/v1/questions/', {
+    fetch(baseUri, {
         method: 'POST',
         headers: {
             Authorization: `Bearer ${token}`,
@@ -87,7 +89,7 @@ const postQuestion = (details) => {
 
 // Function to get all question from all users
 const getAllQuestions = () => {
-    fetch('http://127.0.0.1:5000/stackoverflowlite/api/v1/questions/', {
+    fetch(baseUri, {
         method: 'GET',
         headers: {
             Authorization: `Bearer ${token}`,

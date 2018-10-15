@@ -1,5 +1,6 @@
 const login = document.querySelector('#login-form');
 const warning = document.querySelector('#warning');
+const uri = 'https://stackoverflowlite-api.herokuapp.com/stackoverflowlite/api/v1/auth/login';
 
 // Add even listener for form submission
 login.addEventListener('submit', e => {
@@ -16,7 +17,7 @@ login.addEventListener('submit', e => {
 
 // Function to log user in
 const loginUser = (details) => {
-    fetch('http://127.0.0.1:5000/stackoverflowlite/api/v1/auth/login', {
+    fetch(uri, {
         method: 'POST',
         headers: {
             Accept: 'application/json, text/plain, */*',
