@@ -11,104 +11,56 @@
   </head>
   <body>
     <div class="topnav" id="myTopnav">
-      <a href="index.html" class="menu-logo"></a>
-      <a href="login.html" class="menu-item">Logout</a>
+      <a href="dashboard.html" class="menu-logo"></a>
+      <a onclick="logOut()" class="menu-item" id="logout">Logout</a>
+      <a href="profile.html" class="menu-item" id="username-field">Profile</a>
       <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
     </div>
 
     <div class="load-question">
-      <div class="question-title"><h2>Java/Android/SQLIte update database as I go vs updating database all at one time?</h2></div>
-      <div class="question-body">
-        <p>I am a programming noob writing a relatively large application for android using java code. The app is basically a game in which each user has a team with multiple players. Up until this point I have been using saved instance state and class instance variables to save game progress /player stats, but now that the app is almost completely written I have foolishly only just decided to learn and incorporate an SQLite database so that a users progress can be saved and resumed even after exiting the app.</p>
-
-        <p>My question is simply for someone to explain the pros and cons of the following pleaaasseee:</p>
-
-        <p>1) updating each instance variable (and there are a lot of them) individually as the program runs... (I am just delving into learning about SQLite databases, but I gather the impression that constantly calling the cursor and writing/reading data from a database will be noticeably slower than how it ran originally with just instance variables and saved instance states) is this true?</p>
-
-        <p>2)Find a convenient place to update the entirety of the database all at one time (Again this is a pretty decent sized app and i fear that maybe waiting to save everything to the database upon exit will present a very noticeable lag) am i wrong?</p>
-
-        <p>3)Should I update the database at random periodic intervals? (would the best solution be to update all instance variables to the database every time a user changes activities (or something similar ) here-by lessening the database write time at least some so that when the database gets inevitably updated upon exit, it wont have as huge a lag time)</p>
-
-        <p>I would really like to have an idea of this before I basically have to overhaul my entire app to incorporate SQLIte. I would much appreciate a suggestion on the best route to go. THANK YOU!!</p>
-
-        <div class="votes">
-          
-        </div>
+      <div class="question-title"><h2 id="question-title"></h2></div>
+      <div class="question-body"><p id="question-body"></p></div> 
+      <div id="question-details">
+        <p>Posted by: <b><span id="posted-by"></span></b></p>
+        <p>Posted on: <b><span id="posted-at"></span></b></p>
       </div>
+      <!-- Form to load answers -->
       <div class="question-answers">
         <table id="questions-table">
-          <tr>
-            <td>
-              <ul>
-                <li><button class="upvote-btn"><i class="fa fa-thumbs-up"></i> <span class="btn-text">Upvote</span></button></li>
-                <li><button class="downvote-btn"><i class="fa fa-thumbs-down"></i> <span class="btn-text">Downvote</span></button></li>
-                <li><button type="button" class="delete-btn"><i class="fa fa-trash"></i> <span class="btn-text">Delete Question</span></button></li>
-              </ul>
-            </td>
-              
-            
-          </tr>
-          <tr>
-            <td>
-              <p>
-                If None is the only value your method returns for which bool(returnValue) equals False, then if not new: ought to work fine. This occurs sometimes in the built-in libs - for example, re.match returns either None or a truthy match object
-              </p>
-              <p>
-                Pull out the smallest bit of code that demonstrates the problem. Post that. Add print functions (or statements depending on the version) to reveal the actual values that variables actually have in the code that's having this problem.
-              </p>
-              <p><b> - <a href="profile.html">TheGlitch</a></b> | <button class="accept-btn"><i class="fa fa-check-circle"></i> Accept</button></p>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>
-                If None is the only value your method returns for which bool(returnValue) equals False, then if not new: ought to work fine. This occurs sometimes in the built-in libs - for example, re.match returns either None or a truthy match object
-              </p>
-              <p>
-                Pull out the smallest bit of code that demonstrates the problem. Post that. Add print functions (or statements depending on the version) to reveal the actual values that variables actually have in the code that's having this problem.
-              </p>
-              <p><b> - <a href="profile.html">TheGlitch</a></b> | <button class="accept-btn"><i class="fa fa-check-circle"></i> Accept</button></p>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>
-                If None is the only value your method returns for which bool(returnValue) equals False, then if not new: ought to work fine. This occurs sometimes in the built-in libs - for example, re.match returns either None or a truthy match object
-              </p>
-              <p>
-                Pull out the smallest bit of code that demonstrates the problem. Post that. Add print functions (or statements depending on the version) to reveal the actual values that variables actually have in the code that's having this problem.
-              </p>
-              <p><b> - <a href="profile.html">TheGlitch</a></b> | <button class="accept-btn"><i class="fa fa-check-circle"></i> Accept</button></p>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <form action="">
-                <div class="container">
-                <label for="answer"><b>Your Answer</b></label>
-                <textarea rows="15" cols="50" name="answer-body" placeholder="Your Answer"required></textarea>
-                <button class="button" type="submit"><span>Post Your Answer</span></button>
-                </div>
-              </form>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="pagination">
-                <a href="#">&laquo;</a>
-                <a href="#" class="active">1</a>
-                <a href="#" >2</a>
-                <a href="#">3</a>
-                <a href="#">&raquo;</a>
-              </div>
-            </td>
-            <td></td>
-            <td></td>
-          </tr>
+          <hr>
+          </table>
+          <table id="questions-pop-table">
+              <div id="warning" class="hide"></div>
+              <tr>
+                  <div id="success" class="hide"></div>
+                  <td>
+                    <form id="answersForm">
+                      <div class="container">
+                      <label for="answer"><b>Your Answer</b></label>
+                      <textarea rows="15" cols="50" id="answer-body" placeholder="Your Answer" required></textarea>
+                      <button class="button" type="submit"><span>Post Your Answer</span></button>
+                      </div>
+                    </form>
+                  </td>
+                </tr>
+                <tr>
+                    <div id="edit-container" class="modal" tabindex="-1">
+                        <form id="answersEditForm">
+                        <div class="container">
+                        <label for="answer"><b>Update Answer</b></label>
+                        <textarea rows="15" cols="50" id="edit-answer-body" placeholder="Your Answer" required></textarea>
+                        <div id="edit-buttons">
+                          <div class="grid-item"><button class="button" type="submit"><span>Update Answer</span></button></div>
+                          <div class="grid-item"><a class="button" id="cancel-form">Cancel</a></div>
+                        </div>
+                        </div>
+                        </form>
+                      </div>  
+                </tr>
           </table>
       </div>
     </div>
-    <footer class="footer-section">
+    <footer class="footer-section" style="position: static;">
           <p class="footer-links">
             <a href="index.html">Home</a>
             ·
@@ -119,5 +71,6 @@
           <p class="footer-company-name">stackoverflow-lite &copy; 2018</p>
     </footer>
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/question.js"></script>
   </body>
 </html>

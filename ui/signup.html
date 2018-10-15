@@ -10,33 +10,34 @@
   <body>
     <div class="topnav" id="myTopnav">
       <a href="index.html" class="menu-logo"></a>
-      <a href="login.html" class="menu-item">Login</a>
+      <a href="index.html" class="menu-item">Login</a>
       <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
     </div>
     <div class="signup-section">
-      <form action="">
+      <div id="access-header">Create your new account.</div>
+      <div id="success" class="hide" style="margin: 20px;"></div>
+      <div id="warning" class="hide" style="margin: 20px;"></div>
+      <form id="signup-form">
         <div class="container">
           <label for="uname"><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required>
+          <input type="text" placeholder="Enter Username" id="username" required>
 
-          <label for="fname"><b>Full name</b></label>
-          <input type="text" placeholder="Enter full name" name="fname" required>
 
           <label for="email"><b>Email</b></label>
-          <input type="text" placeholder="Enter email" name="email" required>
+          <input type="text" placeholder="Enter email" id="email" required>
 
           <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
+          <input type="password" placeholder="Enter Password" id="psw" required>
 
           <label for="cpsw"><b>Confirm password</b></label>
-          <input type="password" placeholder="Re-type password" name="cpsw" required>
+          <input type="password" placeholder="Re-type password" id="cpsw" required>
 
-          <button class="button" type="submit"><span>Register</span></button>
+          <button class="button" type="submit" id="register-btn"><span>Register</span></button>
         </div>
       </form>
     </div>
       
-    <footer class="footer-section" style="position: fixed">
+    <footer class="footer-section" style="position: fixed;">
       <p class="footer-links">
         <a href="index.html">Home</a>
         ·
@@ -47,5 +48,6 @@
       <p class="footer-company-name">Stackoverflow-lite &copy; 2018</p>
     </footer>
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/signup.js"></script>
   </body>
 </html>
