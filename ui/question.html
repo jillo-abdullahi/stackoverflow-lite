@@ -10,66 +10,70 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
-    <div class="topnav" id="myTopnav">
-      <a href="dashboard.html" class="menu-logo"></a>
-      <a onclick="logOut()" class="menu-item" id="logout">Logout</a>
-      <a href="profile.html" class="menu-item" id="username-field">Profile</a>
-      <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
-    </div>
-
-    <div class="load-question">
-      <div class="question-title"><h2 id="question-title"></h2></div>
-      <div class="question-body"><p id="question-body"></p></div> 
-      <div id="question-details">
-        <p>Posted by: <b><span id="posted-by"></span></b></p>
-        <p>Posted on: <b><span id="posted-at"></span></b></p>
+    <div class="wrapper">
+      <div class="container-wrapper">
+      <div class="topnav" id="myTopnav">
+        <a href="dashboard.html" class="menu-logo"></a>
+        <a onclick="logOut()" class="menu-item" id="logout">Logout</a>
+        <a href="profile.html" class="menu-item" id="username-field">Profile</a>
+        <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
       </div>
-      <!-- Form to load answers -->
-      <div class="question-answers">
-        <table id="questions-table">
-          <hr>
-          </table>
-          <table id="questions-pop-table">
-              <div id="warning" class="hide"></div>
-              <tr>
-                  <div id="success" class="hide"></div>
-                  <td>
-                    <form id="answersForm">
-                      <div class="container">
-                      <label for="answer"><b>Your Answer</b></label>
-                      <textarea rows="15" cols="50" id="answer-body" placeholder="Your Answer" required></textarea>
-                      <button class="button" type="submit"><span>Post Your Answer</span></button>
-                      </div>
-                    </form>
-                  </td>
-                </tr>
+    
+      <div class="load-question">
+        <div class="question-title"><h2 id="question-title"></h2></div>
+        <div class="question-body"><p id="question-body"></p></div> 
+        <div id="question-details">
+          <p>Posted by: <b><span id="posted-by"></span></b></p>
+          <p>Posted on: <b><span id="posted-at"></span></b></p>
+        </div>
+        <!-- Form to load answers -->
+        <div class="question-answers">
+          <table id="questions-table">
+            <hr>
+            </table>
+            <table id="questions-pop-table">
+                <div id="warning" class="hide"></div>
                 <tr>
-                    <div id="edit-container" class="modal" tabindex="-1">
-                        <form id="answersEditForm">
+                    <div id="success" class="hide"></div>
+                    <td>
+                      <form id="answersForm">
                         <div class="container">
-                        <label for="answer"><b>Update Answer</b></label>
-                        <textarea rows="15" cols="50" id="edit-answer-body" placeholder="Your Answer" required></textarea>
-                        <div id="edit-buttons">
-                          <div class="grid-item"><button class="button" type="submit"><span>Update Answer</span></button></div>
-                          <div class="grid-item"><a class="button" id="cancel-form">Cancel</a></div>
+                        <label for="answer"><b>Your Answer</b></label>
+                        <textarea rows="15" cols="50" id="answer-body" placeholder="Your Answer" required></textarea>
+                        <button class="button" type="submit"><span>Post Your Answer</span></button>
                         </div>
-                        </div>
-                        </form>
-                      </div>  
-                </tr>
-          </table>
+                      </form>
+                    </td>
+                  </tr>
+                  <tr>
+                      <div id="edit-container" class="modal" tabindex="-1">
+                          <form id="answersEditForm">
+                          <div class="container">
+                          <label for="answer"><b>Update Answer</b></label>
+                          <textarea rows="15" cols="50" id="edit-answer-body" placeholder="Your Answer" required></textarea>
+                          <div id="edit-buttons">
+                            <div class="grid-item"><button class="button" type="submit"><span>Update</span></button></div>
+                            <div class="grid-item"><a class="button" id="cancel-form"><span>Cancel</span></a></div>
+                          </div>
+                          </div>
+                          </form>
+                        </div>  
+                  </tr>
+            </table>
+        </div>
+      </div> <!--load question div-->
+      <div class="footer-section">
+        <p class="footer-links">
+          <a href="index.html">Home</a>
+          ·
+          <a href="#aboutus">About</a>
+          ·
+          <a href="#contact">Contact</a>
+        </p>
+        <p class="footer-company-name">stackoverflow-lite &copy; 2018</p>
       </div>
     </div>
-    <footer class="footer-section">
-          <p class="footer-links">
-            <a href="index.html">Home</a>
-            ·
-            <a href="#aboutus">About</a>
-            ·
-            <a href="#contact">Contact</a>
-          </p>
-          <p class="footer-company-name">stackoverflow-lite &copy; 2018</p>
-    </footer>
+    </div>
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/question.js"></script>
   </body>
