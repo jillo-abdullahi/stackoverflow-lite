@@ -7,39 +7,43 @@
     <link rel="shortcut icon" href="img/logo.ico"/>
   </head>
   <body>
-    <div class="topnav" id="myTopnav">
-      <a href="index.html" class="menu-logo"></a>
-      <a href="signup.html" class="menu-item">Signup</a>
-      <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
-    </div>
-      <div class="login-section">
-        <div id="access-header">Sign in to access your account.</div>
-        <form id="login-form">
-          <div id="warning" class="hide"></div>
-          <div class="container">
-            <label for="uname"><b>Email</b></label>
-            <input type="text" placeholder="Enter your email" id="email" required>
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" id="psw" required>
+    <div class="wrapper">
+      <div class="container-wrapper">
+        <div class="topnav" id="myTopnav">
+          <a href="index.html" class="menu-logo"></a>
+          <a href="signup.html" class="menu-item">Signup</a>
+          <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+        </div>
+          <div class="login-section">
+            <div id="access-header">Sign in to access your account.</div>
+            <form id="login-form">
+              <div id="warning" class="hide"></div>
+              <div class="container">
+                <label for="uname"><b>Email</b></label>
+                <input type="text" placeholder="Enter your email" id="email" required>
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" id="psw" required>
 
-            <label><input type="checkbox" checked="checked" name="remember"> Remember me</label>
-            <button class="button" type="submit"><span>Login</span></button>
-            <label><a href="#forgot"><span>Forgot password?</span></a></label>
-             <label><a href="signup.html"><span>Create Account</span></a></label>
+                <label><input type="checkbox" checked="checked" name="remember"> Remember me</label>
+                <button class="button" type="submit"><span>Login</span></button>
+                <label><a href="#forgot"><span>Forgot password?</span></a></label>
+                <label><a href="signup.html"><span>Create Account</span></a></label>
+              </div>
+            </form>
           </div>
-        </form>
+      
+        <footer class="footer-section">
+              <p class="footer-links">
+                <a href="index.html">Home</a>
+                ·
+                <a href="#aboutus">About</a>
+                ·
+                <a href="#contact">Contact</a>
+              </p>
+              <p class="footer-company-name">stackoverflow-lite &copy; 2018</p>
+        </footer>
       </div>
-  
-    <footer class="footer-section">
-          <p class="footer-links">
-            <a href="index.html">Home</a>
-            ·
-            <a href="#aboutus">About</a>
-            ·
-            <a href="#contact">Contact</a>
-          </p>
-          <p class="footer-company-name">stackoverflow-lite &copy; 2018</p>
-    </footer>
+    </div>
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/login.js"></script>
   </body>
