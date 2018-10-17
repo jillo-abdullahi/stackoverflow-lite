@@ -379,6 +379,7 @@ p {
 }
 
 
+
 /*Profile section*/
 
 .profile-main {
@@ -448,7 +449,7 @@ p {
 }
 
 @media (max-width: 500px) {
-  img {
+  .stat img {
     width: 100px;
     height: 100px;
   }
