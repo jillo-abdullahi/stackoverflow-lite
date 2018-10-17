@@ -75,7 +75,7 @@ const postQuestion = (details) => {
                 success.classList.add('hide');
                 warning.classList.remove('hide');
                 warning.classList.add('show');
-                warning.innerHTML = `Warning! ${data.error}`;
+                warning.innerHTML = data.error;
             });
         } else if (err.status === 401) {
             success.classList.remove('show');
