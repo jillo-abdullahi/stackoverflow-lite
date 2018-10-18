@@ -81,6 +81,10 @@ let getOneQuestion = () => {
                                 <li>
                                 <button onclick="editAnswer(${element.id})" id="edit-qn-btn">
                                 <i class="fa fa-edit"></i> Edit</button>
+                                </li>
+                                <li>
+                                <button onclick="deleteAnswer(${element.id})" id="edit-qn-btn">
+                                <i class="fa fa-trash"></i> Delete</button>
                                 </li>`;
                                 if (element.preferred !== true) {
                                     output += `
@@ -95,6 +99,10 @@ let getOneQuestion = () => {
                                 <li>
                                 <button onclick="editAnswer(${element.id})" id="edit-qn-btn">
                                 <i class="fa fa-edit"></i> Edit</button>
+                                </li>
+                                <li>
+                                <button onclick="deleteAnswer(${element.id})" id="edit-qn-btn">
+                                <i class="fa fa-trash"></i> Delete</button>
                                 </li>
                                 `;
                         } else if (`${questionAuthor}` === `${userId}` && element.preferred !== true) {
@@ -286,4 +294,34 @@ const editAnswer = (answerId) => {
             }
             });  
     });  
+};
+
+// Function to delete an answer
+const deleteAnswer = (answerId) => {
+    if (confirm('Are you sure you want to delete this answer?')) {
+        fetch(`${baseUri}answer/${answerId}`, {
+        method: 'DELETE',
+        headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: 'application/json, text/plain, */*',
+            'Content-type': 'application/json'
+        }   
+    })
+    .then((response) => handleResponse(response))
+    .then((res) => {
+        if (res.status === 200) {
+            res.json().then(data => { 
+                alert(data.message);
+                location.reload(true);
+            });
+        }
+    })
+    .catch((err) => {
+        if (err.status === 404) {
+            err.json().then(data => {
+                alert(data.message);
+            });
+        }
+    });          
+    }       
 };
