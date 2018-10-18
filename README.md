@@ -8,15 +8,21 @@ Clone the repository into your local environment: &nbsp;
 `git clone https://github.com/jillo-abdullahi/stackoverflow-lite`&nbsp;
 
 Switch to stackoverflow-lite directory you just cloned:&nbsp;
-`cd stackoverflow-lite/UI`&nbsp;
+`cd stackoverflow-lite/ui`&nbsp;
 
 Run `index.html` file in your browser.&nbsp;
+
+# Use the App:
 
 #### UI link to gh-pages:
 
 https://jillo-abdullahi.github.io/stackoverflow-lite/ui/ &nbsp; 
 
-# Installation - API
+#### Link to hosted version on Heroku
+
+https://stack-lite-qa.herokuapp.com &nbsp;
+
+# API Endpoints consumed
 
 **EndPoint** | **Functionality**
 --- | ---
