@@ -1,5 +1,6 @@
 const signup = document.querySelector('#signup-form');
 const success = document.querySelector('#success');
+const progressBar = document.querySelector('#progress');
 const warning = document.querySelector('#warning');
 const uri = 'https://stackoverflowlite-api.herokuapp.com/stackoverflowlite/api/v1/auth/signup';
 
@@ -17,6 +18,9 @@ signup.addEventListener('submit', e => {
             password: usPassword,
             confirm: usConfPassword
         };
+    // display progress bar
+    progressBar.classList.remove('hide');
+    progressBar.classList.add('show');
     signUpUser(userData);
 });
 
@@ -33,6 +37,8 @@ const signUpUser = (details) => {
     .then((res) => {
         if (res.status === 201) {
             res.json().then(data => {
+                progressBar.classList.remove('show');
+                progressBar.classList.add('hide');
                 success.classList.remove('hide');
                 warning.classList.add('hide');
                 success.classList.add('show');
@@ -54,6 +60,8 @@ const signUpUser = (details) => {
     .catch((err) => {
         if (err.status === 400) {
             err.json().then(data => {
+                progressBar.classList.remove('show');
+                progressBar.classList.add('hide');
                 warning.classList.remove('hide');
                 warning.classList.add('show');
                 warning.innerHTML = data.error;
