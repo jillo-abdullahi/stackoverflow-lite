@@ -635,6 +635,13 @@ div.grid-item .button {
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 
+#progress {
+  width: 100px;
+  margin: 5px auto;
+  display: none;
+  padding: 0;
+}
+
 .questions-header {
   padding: 15px;
   margin-top: 0px;

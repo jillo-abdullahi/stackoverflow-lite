@@ -1,5 +1,6 @@
 const login = document.querySelector('#login-form');
 const warning = document.querySelector('#warning');
+const progressBar = document.querySelector('#progress');
 const uri = 'https://stackoverflowlite-api.herokuapp.com/stackoverflowlite/api/v1/auth/login';
 
 // Add even listener for form submission
@@ -12,6 +13,8 @@ login.addEventListener('submit', e => {
             email: usEmail,
             password: usPassword
         };
+    // display progress bar
+    progressBar.style.display = 'block';
     loginUser(userData);   
 });
 
