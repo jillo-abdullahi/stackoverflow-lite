@@ -14,7 +14,8 @@ login.addEventListener('submit', e => {
             password: usPassword
         };
     // display progress bar
-    progressBar.style.display = 'block';
+    progressBar.classList.remove('hide');
+    progressBar.classList.add('show');
     loginUser(userData);   
 });
 
@@ -44,6 +45,8 @@ const loginUser = (details) => {
             err.json().then(data => {
                 warning.classList.remove('hide');
                 warning.classList.add('show');
+                progressBar.classList.remove('show');
+                progressBar.classList.add('hide');
                 warning.innerHTML = `Signin failed! ${data.error}`;
             });
         }
