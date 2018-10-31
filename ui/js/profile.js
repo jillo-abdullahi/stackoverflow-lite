@@ -107,9 +107,9 @@ let getUserQuestions = () => {
                             <a id="question-title"><b>${element.title}</b></a>
                         </h4>
                         <p>
-                            Posted on: <span id="post-time">${element.date_created}</span>
                             <h4 id="answers-count">
-                            <u>Total answers: ${element.Answers.length}</u></h4>
+                            <u>Total answers: ${element.Answers.length}</u>
+                            </h4>
                         </p>
                         </td>
                         <td><img src="img/upvote.png" alt="upvotes image">3</td>
